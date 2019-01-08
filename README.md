@@ -22,3 +22,8 @@ TTACCTAATTGGTGAGGCAATGGCTCACCAAGGCGACGATCACTAGCTGGTCTGAGAGGATGATCAGCCACACTGGGACT
 GTACACATGCAAGTCGGACGGGGAGCATCCTAGTGATGTTTTCAGTGGCGGACGGGTGAGTAACGCGTAAGAACCTGCCCCTGGGAGGGGGACAACAGCTGGAAACGGTTGCTAATACCCCGTAGGCTGAGGAGCAAAAGGAGGGATCCGCCCAAGGAGGGGCTTGCGTCTGATTAGCTAGTTGGTGGGGTAATGGCTCACCAAGGCGACGATCAGTAGCTGGTCTGAGAGGATGATCAGCCACACTGGGACTGAGACACGGCCCAGACTCTTACGGGAGGCAGCAGTGGGGAATTTTCCGCAATGGGCGAGAGCCTGACGGAGCAATGCCGCGTGGAGGTAGAAGGCTCACGGGTCGTAAACTCCTTTTCTCGGAGAAGATGCAATGACGGTATCCGAGGAATAAGCATCGGC
 
 ```
+## Note
+
+The EzBioCloud database has some illegal characters (. and -) that produce an error when converting it from a fasta file to an udb-type database; the udb is more efficient than a fasta file for many searching purposes. You can convert it with [vsearch](https://github.com/torognes/vsearch). You should replace this illegal characters before converting. You can replace them with an underscore (_): `sed -i 's/\./_/g; s/-/_/g' EzBioCloud.fasta`
+
+`vsearch --makeudb_usearch EzBioCloud.fasta --output EzBioCloud.udb`
